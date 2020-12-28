@@ -104,7 +104,7 @@ static void opex(RStrBuf *buf, csh handle, cs_insn *insn) {
 	int i;
 	PJ *pj = pj_new ();
 	if (!pj) {
-		return:
+		return;
 	}
 	pj_o (pj);
 	pj_ka (pj, "operands");
@@ -168,7 +168,7 @@ static const char *arg(csh *handle, cs_insn *insn, char *buf, int n) {
 					insn->detail->riscv.operands[n].mem.base));
 		} else {
 			sprintf (buf, "0x%"PFMT64x",%s,+",
-				insn->detail->riscv.operands[n].mem.disp,
+				(ut64)insn->detail->riscv.operands[n].mem.disp,
 				cs_reg_name (*handle,
 					insn->detail->riscv.operands[n].mem.base));
 		}
